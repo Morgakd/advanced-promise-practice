@@ -9,15 +9,17 @@ function loadAllContacts() {
     console.log("Contact response",response);
     return response.json();
   });
-  convertToJsonPromise.then((data) => { 
+  convertToJsonPromise.then((data) => {
     console.log("Contact data",data);
     document.getElementById("numberOfContacts").innerHTML = data.length;
   });
 
   // 2) Short way
+  //change out "/contacts" with the api URL
   fetch("/contacts").then(function (response) {
     return response.json();
-  }).then((data) => { 
+  }).then((data) => {
+    //then put it in the div...
     document.getElementById("numberOfContacts2").innerHTML = data.length;
   });
 }
@@ -35,6 +37,5 @@ window.createContact = function () {
     occupation: "FBI Agent"
   }).then(function (data) {
     loadAllContacts();
-  });    
+  });
 };
-
